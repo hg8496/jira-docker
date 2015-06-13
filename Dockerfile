@@ -16,6 +16,7 @@ RUN apt-get update \
     && /usr/sbin/groupadd atlassian \
     && /usr/sbin/useradd --create-home --home-dir /opt/jira --groups atlassian --shell /bin/bash jira \
     && tar zxf /root/jira.tar.gz --strip=1 -C /opt/jira \
+    && mkdir -p /opt/atlassian-home \
     && chown -R jira:jira /opt/atlassian-home \
     && echo "jira.home = /opt/atlassian-home" > /opt/jira/atlassian-jira/WEB-INF/classes/jira-application.properties \
     && chown -R jira:jira /opt/jira \
