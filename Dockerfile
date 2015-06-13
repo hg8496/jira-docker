@@ -7,7 +7,7 @@ ADD own-volume.sh /usr/local/bin/own-volume
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y \
-    && DEBIAN_FRONTEND=noninteractive apt-get install sudo software-properties-common python-software-properties curl -y \
+    && DEBIAN_FRONTEND=noninteractive apt-get install sudo software-properties-common python-software-properties xmlstarlet curl -y \
     && echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections \
     && DEBIAN_FRONTEND=noninteractive apt-add-repository ppa:webupd8team/java -y \
     && apt-get update \
@@ -22,7 +22,7 @@ RUN apt-get update \
     && chown -R jira:jira /opt/jira \
     && mv /opt/jira/conf/server.xml /opt/jira/conf/server-backup.xml \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/jira.tar.gz \
     && echo "%atlassian ALL=NOPASSWD: /usr/local/bin/own-volume" >> /etc/sudoers \
     && mkdir -p /opt/atlassian-home
 
