@@ -110,7 +110,7 @@ else
   CONTEXT_PATH="/$CONTEXT_PATH"
 fi
 
-xmlstarlet ed -u '//Context/@path' -v "$CONTEXT_PATH" conf/server-backup.xml >  
+xmlstarlet ed -u '//Context/@path' -v "$CONTEXT_PATH" conf/server-backup.xml > server.xml
 
 if [ -n "$SSL_PROXY" ]; then
   cat conf/server.xml \
