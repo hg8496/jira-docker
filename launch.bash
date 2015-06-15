@@ -110,13 +110,14 @@ else
   CONTEXT_PATH="/$CONTEXT_PATH"
 fi
 
-xmlstarlet ed -u '//Context/@path' -v "$CONTEXT_PATH" conf/server-backup.xml > server.xml
+xmlstarlet ed -u '//Context/@path' -v "$CONTEXT_PATH" conf/server-backup.xml > conf/server.xml
 
 if [ -n "$SSL_PROXY" ]; then
-  cat conf/server.xml \
-   | xmlstarlet ed -i "//Connector" -t attr -n scheme -v https \
+  mv conf/server.xml conf/serverpreproxy.xml
+  xmlstarlet ed -i "//Connector" -t attr -n scheme -v https conf/serverpreproxy.xml \
    | xmlstarlet ed -i "//Connector" -t attr -n proxyName -v $SSL_PROXY \
-   | xmlstarlet ed -i "//Connector" -t attr -n proxyPort -v 443 > server.xml
+   | xmlstarlet ed -i "//Connector" -t attr -n proxyPort -v 443 > conf/server.xml
+  rm conf/serverpreproxy.xml
 fi
 
 if [ -n "$DATABASE_URL" ]; then
