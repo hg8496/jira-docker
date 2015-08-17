@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER hg8496@cstolz.de
 
-ENV JIRA_VERSION 6.4.6
+ENV JIRA_VERSION 6.4.10
 
 ADD own-volume.sh /usr/local/bin/own-volume
 
