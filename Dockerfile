@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER hg8496@cstolz.de
 
-ENV JIRA_VERSION 6.4.10
+ENV JIRA_VERSION 7.0.0
 
 ADD own-volume.sh /usr/local/bin/own-volume
 
@@ -12,7 +12,7 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-add-repository ppa:webupd8team/java -y \
     && apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install oracle-java8-installer -y \
-    && curl -Lks http://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-${JIRA_VERSION}.tar.gz -o /root/jira.tar.gz \
+    && curl -Lks  https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-${JIRA_VERSION}-jira-${JIRA_VERSION}.tar.gz -o /root/jira.tar.gz \
     && /usr/sbin/groupadd atlassian \
     && /usr/sbin/useradd --create-home --home-dir /opt/jira --groups atlassian --shell /bin/bash jira \
     && tar zxf /root/jira.tar.gz --strip=1 -C /opt/jira \
