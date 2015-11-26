@@ -1,7 +1,7 @@
 FROM hg8496/atlassian-docker
 MAINTAINER hg8496@cstolz.de
 
-ENV JIRA_VERSION 7.0.0
+ENV JIRA_VERSION 7.0.2
 
 RUN curl -Lks  https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-${JIRA_VERSION}-jira-${JIRA_VERSION}.tar.gz -o /jira.tar.gz
 RUN mkdir -p /opt/jira
