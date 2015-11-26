@@ -11,8 +11,8 @@ RUN curl -Lks  https://downloads.atlassian.com/software/jira/downloads/atlassian
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/jira.tar.gz
 
 ENV CONTEXT_PATH ROOT
-ENV DATABASE_URL
-ENV SSL_PROXY
+ENV DATABASE_URL ""
+ENV SSL_PROXY ""
 
 ADD launch.bash /launch
 
