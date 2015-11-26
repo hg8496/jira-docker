@@ -8,6 +8,7 @@ RUN mkdir -p /opt/jira
 RUN tar zxf /jira.tar.gz --strip=1 -C /opt/jira
 RUN echo "jira.home = /opt/atlassian-home" > /opt/jira/atlassian-jira/WEB-INF/classes/jira-application.properties
 RUN mv /opt/jira/conf/server.xml /opt/jira/conf/server-backup.xml
+RUN chown -R atlassian:atlassian /opt/jira
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /jira.tar.gz
 
